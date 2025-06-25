@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { headers } from 'next/headers';
 import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY || 're_DqSZhzVP_MKruoqTkirbwRKSAidL48jBq');
@@ -31,9 +32,10 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Get client IP from request headers
-    const forwardedFor = request.headers.get('x-forwarded-for');
-    const realIp = request.headers.get('x-real-ip');
+    // Get client IP from request headers using Next.js headers() function
+    const headersList = headers();
+    const forwardedFor = headersList.get('x-forwarded-for');
+    const realIp = headersList.get('x-real-ip');
     const clientIp = forwardedFor || realIp || 'Unknown';
 
     // Create HTML email content
