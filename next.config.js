@@ -1,6 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // output: 'export',
   eslint: {
     ignoreDuringBuilds: true,
   },
@@ -18,12 +17,10 @@ const nextConfig = {
   swcMinify: true,
   poweredByHeader: false,
   reactStrictMode: true,
-  // Disable font optimization to prevent build errors
-  optimizeFonts: false,
-  // Disable static optimization for problematic pages
-  trailingSlash: true,
-  // Ensure proper static export
-  distDir: 'out',
+  // Enable font optimization for better performance
+  optimizeFonts: true,
+  // Remove static export configuration for Vercel deployment
+  trailingSlash: false,
 };
 
 module.exports = nextConfig;
