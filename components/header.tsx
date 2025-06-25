@@ -101,14 +101,14 @@ const MobileDropdown = memo(({ item, isActive, onClick }: { item: any, isActive:
     if (!item.hasDropdown) return null
 
     return (
-        <div className="px-3">
+        <div className="px-4">
             <button
                 onClick={() => setIsOpen(!isOpen)}
                 className={cn(
-                    'w-full flex items-center justify-between font-medium transition-all duration-300 text-sm relative pb-1 px-0 py-2',
+                    'w-full flex items-center justify-between font-medium transition-all duration-300 text-base relative pb-1 px-0 py-3',
                     isActive 
                         ? 'text-purple-900' 
-                        : 'text-gray-600 hover:text-purple-900'
+                        : 'text-gray-700 hover:text-purple-900'
                 )}
             >
                 {item.name}
@@ -125,7 +125,7 @@ const MobileDropdown = memo(({ item, isActive, onClick }: { item: any, isActive:
                             key={index}
                             href={dropdownItem.href}
                             onClick={onClick}
-                            className="block py-1.5 text-sm text-gray-600 hover:text-purple-900 transition-colors duration-200"
+                            className="block py-2 text-sm text-gray-600 hover:text-purple-900 transition-colors duration-200"
                         >
                             {dropdownItem.name}
                         </Link>
@@ -231,9 +231,9 @@ export const HeroHeader = memo(() => {
                 "lg:hidden fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-white shadow-2xl transform transition-transform duration-300 ease-in-out z-50",
                 menuState ? "translate-x-0" : "translate-x-full"
             )}>
-                <div className="flex flex-col h-full bg-white">
+                <div className="flex flex-col h-full">
                     {/* Menu Header */}
-                    <div className="flex items-center justify-between p-4 border-b bg-white flex-shrink-0">
+                    <div className="flex items-center justify-between p-6 border-b bg-white flex-shrink-0">
                         <Logo />
                         <button 
                             onClick={closeMenu}
@@ -244,9 +244,9 @@ export const HeroHeader = memo(() => {
                         </button>
                     </div>
                     
-                    {/* Menu Items - Scrollable area */}
-                    <div className="flex-1 py-4 bg-white overflow-y-auto">
-                        <div className="space-y-1">
+                    {/* Menu Items */}
+                    <div className="flex-1 bg-white">
+                        <div className="py-2">
                             {menuItems.map((item, index) => (
                                 <div key={index}>
                                     {item.hasDropdown ? (
@@ -256,12 +256,19 @@ export const HeroHeader = memo(() => {
                                             onClick={closeMenu}
                                         />
                                     ) : (
-                                        <div className="px-3">
-                                            <MenuItem 
-                                                item={item} 
-                                                isActive={pathname === item.href} 
+                                        <div className="px-4">
+                                            <Link
+                                                href={item.href}
                                                 onClick={closeMenu}
-                                            />
+                                                className={cn(
+                                                    'block font-medium transition-all duration-300 text-base relative py-3 border-b border-gray-100 last:border-b-0',
+                                                    pathname === item.href 
+                                                        ? 'text-purple-900 bg-purple-50' 
+                                                        : 'text-gray-700 hover:text-purple-900 hover:bg-gray-50'
+                                                )}
+                                            >
+                                                {item.name}
+                                            </Link>
                                         </div>
                                     )}
                                 </div>
@@ -270,7 +277,7 @@ export const HeroHeader = memo(() => {
                     </div>
                     
                     {/* Menu Footer */}
-                    <div className="p-4 border-t bg-white flex-shrink-0">
+                    <div className="p-6 border-t bg-white flex-shrink-0">
                         <Button 
                             onClick={closeMenu}
                             className="w-full px-4 py-3 rounded-full bg-gray-900 text-white font-medium flex items-center justify-center text-sm transition-colors duration-300 hover:bg-purple-900"
