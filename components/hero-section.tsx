@@ -100,26 +100,6 @@ export default function HeroSection() {
                         </div>
                     </div>
                 </section>
-                
-                {/* Industry Cards Section - Mobile Responsive */}
-                <section className="py-8 sm:py-12 md:py-16 section-bg">
-                    <div className="relative mx-auto max-w-5xl px-4 sm:px-6">
-                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 transition-all duration-500">
-                            {[
-                                { name: "Healthcare", desc: "Medical AI", icon: "🏥" },
-                                { name: "Automotive", desc: "Auto Vehicles", icon: "🚗" },
-                                { name: "Finance", desc: "FinTech", icon: "💰" },
-                                { name: "Retail", desc: "E-commerce", icon: "🛒" }
-                            ].map((item, index) => (
-                                <div key={index} className="text-center p-3 sm:p-4 md:p-6 bg-white/40 rounded-lg backdrop-blur-sm hover:bg-white/60 transition-all duration-300 hover:-translate-y-1 shadow-sm hover:shadow-md">
-                                    <div className="text-lg sm:text-xl md:text-2xl mb-1 sm:mb-2">{item.icon}</div>
-                                    <div className="text-xs sm:text-sm md:text-base lg:text-lg font-bold text-primary mb-1">{item.name}</div>
-                                    <div className="text-xs text-muted-foreground">{item.desc}</div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </section>
             </main>
         </>
     )
