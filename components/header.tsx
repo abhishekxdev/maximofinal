@@ -119,13 +119,13 @@ const MobileDropdown = memo(({ item, isActive, onClick }: { item: any, isActive:
             </button>
             
             {isOpen && (
-                <div className="ml-4 mt-2 space-y-1 border-l-2 border-purple-100 pl-4">
+                <div className="ml-4 mt-1 space-y-1 border-l-2 border-purple-100 pl-4">
                     {item.dropdownItems.map((dropdownItem: any, index: number) => (
                         <Link
                             key={index}
                             href={dropdownItem.href}
                             onClick={onClick}
-                            className="block py-2 text-sm text-gray-600 hover:text-purple-900 transition-colors duration-200"
+                            className="block py-1.5 text-sm text-gray-600 hover:text-purple-900 transition-colors duration-200"
                         >
                             {dropdownItem.name}
                         </Link>
@@ -233,7 +233,7 @@ export const HeroHeader = memo(() => {
             )}>
                 <div className="flex flex-col h-full bg-white">
                     {/* Menu Header */}
-                    <div className="flex items-center justify-between p-6 border-b bg-white">
+                    <div className="flex items-center justify-between p-4 border-b bg-white flex-shrink-0">
                         <Logo />
                         <button 
                             onClick={closeMenu}
@@ -244,8 +244,8 @@ export const HeroHeader = memo(() => {
                         </button>
                     </div>
                     
-                    {/* Menu Items */}
-                    <div className="flex-1 py-6 bg-white overflow-y-auto">
+                    {/* Menu Items - Scrollable area */}
+                    <div className="flex-1 py-4 bg-white overflow-y-auto">
                         <div className="space-y-1">
                             {menuItems.map((item, index) => (
                                 <div key={index}>
@@ -270,7 +270,7 @@ export const HeroHeader = memo(() => {
                     </div>
                     
                     {/* Menu Footer */}
-                    <div className="p-6 border-t bg-white">
+                    <div className="p-4 border-t bg-white flex-shrink-0">
                         <Button 
                             onClick={closeMenu}
                             className="w-full px-4 py-3 rounded-full bg-gray-900 text-white font-medium flex items-center justify-center text-sm transition-colors duration-300 hover:bg-purple-900"
