@@ -200,8 +200,10 @@ export const HeroHeader = memo(() => {
                     
                     {/* Auth Buttons */}
                     <div className="hidden lg:flex items-center space-x-4">
-                        <Button className="px-3 py-2 sm:px-4 sm:py-2 rounded-full bg-gray-900 text-white font-medium flex items-center hover:bg-purple-900 text-sm lg:text-base transition-colors duration-300">
-                            Get Started For Free <ArrowRight className="ml-2 h-3 w-3 sm:h-4 sm:w-4" />
+                        <Button asChild className="px-3 py-2 sm:px-4 sm:py-2 rounded-full bg-gray-900 text-white font-medium flex items-center hover:bg-purple-900 text-sm lg:text-base transition-colors duration-300">
+                            <Link href="/contact">
+                                Get Started For Free <ArrowRight className="ml-2 h-3 w-3 sm:h-4 sm:w-4" />
+                            </Link>
                         </Button>
                     </div>
                     
@@ -278,11 +280,13 @@ export const HeroHeader = memo(() => {
                     
                     {/* Menu Footer */}
                     <div className="p-6 border-t bg-white flex-shrink-0">
-                        <Button 
+                        <Button asChild
                             onClick={closeMenu}
                             className="w-full px-4 py-3 rounded-full bg-gray-900 text-white font-medium flex items-center justify-center text-sm transition-colors duration-300 hover:bg-purple-900"
                         >
-                            Get Started For Free <ArrowRight className="ml-2 h-4 w-4" />
+                            <Link href="/contact">
+                                Get Started For Free <ArrowRight className="ml-2 h-4 w-4" />
+                            </Link>
                         </Button>
                     </div>
                 </div>
