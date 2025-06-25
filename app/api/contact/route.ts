@@ -31,6 +31,11 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Get client IP from request headers
+    const forwardedFor = request.headers.get('x-forwarded-for');
+    const realIp = request.headers.get('x-real-ip');
+    const clientIp = forwardedFor || realIp || 'Unknown';
+
     // Create HTML email content
     const htmlContent = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
@@ -67,7 +72,7 @@ export async function POST(request: NextRequest) {
         <div style="background-color: #e9ecef; padding: 15px; border-radius: 5px; font-size: 14px; color: #6c757d;">
           <strong>Submission Details:</strong><br>
           Date: ${new Date().toLocaleString()}<br>
-          IP Address: ${request.headers.get('x-forwarded-for') || 'Unknown'}
+          IP Address: ${clientIp}
         </div>
         
         <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #dee2e6; font-size: 12px; color: #6c757d;">
