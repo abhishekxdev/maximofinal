@@ -193,7 +193,7 @@ export const HeroHeader = memo(() => {
                             <MenuItem 
                                 key={index} 
                                 item={item} 
-                                isActive={pathname === item.href || (item.hasDropdown && (item.dropdownItems || []).some((dropdownItem: any) => pathname === dropdownItem.href))}
+                                isActive={pathname === item.href || (item.hasDropdown ? (item.dropdownItems || []).some((dropdownItem: any) => pathname === dropdownItem.href) : false)}
                             />
                         ))}
                     </div>
@@ -252,7 +252,7 @@ export const HeroHeader = memo(() => {
                                     {item.hasDropdown ? (
                                         <MobileDropdown 
                                             item={item} 
-                                            isActive={pathname === item.href || ((item.dropdownItems || []).some((dropdownItem: any) => pathname === dropdownItem.href))} 
+                                            isActive={pathname === item.href || (item.dropdownItems ? (item.dropdownItems || []).some((dropdownItem: any) => pathname === dropdownItem.href) : false)} 
                                             onClick={closeMenu}
                                         />
                                     ) : (
